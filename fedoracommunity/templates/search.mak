@@ -49,6 +49,15 @@
 	       -->
                	</div>
                <script type="text/javascript">
+                   window.addEventListener('popstate', function(e) {
+                       var form = document.getElementById('form');
+                       var value = '';
+                       if (e.state) {
+                           value = e.state.search;
+                       }
+                       form.search['value'] = value;
+                       update_search_grid(value);
+                   });
                    function do_search(form) {
                        var value = encodeURIComponent(encodeURIComponent(form.search['value']));
                        window.history.pushState({search: value}, '',
@@ -57,7 +66,7 @@
                        return False;
                    }
                </script>
-               <form action="${tg.url('/s')}"
+               <form id="form" action="${tg.url('/s')}"
                       onSubmit="return do_search(this);">
                       <div class="input-group">
                         <input class ="form-control form-control-lg" type="text" name="search"
