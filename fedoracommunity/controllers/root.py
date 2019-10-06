@@ -74,6 +74,14 @@ class RootController(BaseController):
                             'filters':{'search':search_str}}
                }
 
+    @expose('mako:fedoracommunity.templates.opensearch', content_type='text/xml')
+    def opensearch(self, *args, **kwds):
+        '''OpenSearch provider'''
+        if len(args) > 0 and args[0] == 'fedora_packages.xml':
+            return {'title': 'Fedora Packages'}
+        else:
+            redirect('/')
+
     @expose('mako:fedoracommunity.widgets.templates.widget_loader')
     def _w(self, widget_name, *args, **kwds):
         '''generic widget controller - loads a widget from our widget list

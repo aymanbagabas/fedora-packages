@@ -16,6 +16,9 @@
       type="image/vnd.microsoft.icon" rel="shortcut icon" />
     <link href="//fedoraproject.org/favicon.ico"
       type="image/x-icon" rel="shortcut icon"/>
+    <link title="${title}"
+      rel="search" type="application/opensearchdescription+xml"
+      href="${tg.url('/opensearch')}/fedora_packages.xml" />
 
     <!--[if lt IE 7]>
     <style type="text/css">
